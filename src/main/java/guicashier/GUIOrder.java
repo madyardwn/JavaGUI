@@ -5,14 +5,14 @@ import javax.swing.JOptionPane;
 
 public final class GUIOrder extends javax.swing.JFrame {
     
-    private final DataPlainText dataPlainText;
+    private final Bound data;
     private final Customer customer;
     private final ArrayList<Product> menu;
     private Integer totalBayarTemp;
     
-    private final String steakPrice = "75000";
-    private final String spaghettiPrice = "55000";
-    private final String pizzaPrice = "65000";
+    private final String steak = "45000";
+    private final String spaghetti = "30000";
+    private final String pizza = "55000";
     
     
     public GUIOrder() {
@@ -23,13 +23,13 @@ public final class GUIOrder extends javax.swing.JFrame {
         totalBayarTemp = 0;
         initDaftarMakanan();
         
-        dataPlainText = new DataPlainText();
+        data = new Bound();
     }
     
     public void initDaftarMakanan(){
-        menu.add(new Product(CB_steak.getText(), steakPrice, CB_steak.isSelected()));
-        menu.add(new Product(CB_spaghetti.getText(), spaghettiPrice, CB_spaghetti.isSelected()));
-        menu.add(new Product(CB_pizza.getText(), pizzaPrice, CB_pizza.isSelected()));
+        menu.add(new Product(CB_steak.getText(), steak, CB_steak.isSelected()));
+        menu.add(new Product(CB_spaghetti.getText(), spaghetti, CB_spaghetti.isSelected()));
+        menu.add(new Product(CB_pizza.getText(), pizza, CB_pizza.isSelected()));
     }
     
     public void selectedMenu(String name, Boolean isSelected){
@@ -95,7 +95,7 @@ public final class GUIOrder extends javax.swing.JFrame {
         setTitle("Aplikasi Pemesanan Makanan");
 
         title.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        title.setText("APLIKASI PEMESANAN");
+        title.setText("APLIKASI PEMESANAN MAKANAN");
         title.setToolTipText("");
 
         jLabel6.setText("TOTAL BAYAR");
@@ -132,7 +132,7 @@ public final class GUIOrder extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Customer"));
@@ -225,11 +225,11 @@ public final class GUIOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Rp75.000");
+        jLabel1.setText("Rp45.000");
 
-        jLabel5.setText("Rp55.000");
+        jLabel5.setText("Rp30.000");
 
-        jLabel7.setText("Rp65.000");
+        jLabel7.setText("Rp55.000");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -280,13 +280,6 @@ public final class GUIOrder extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BTN_tambah))
@@ -294,12 +287,15 @@ public final class GUIOrder extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel6)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 181, Short.MAX_VALUE)
+                .addGap(0, 163, Short.MAX_VALUE)
                 .addComponent(title)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,7 +308,7 @@ public final class GUIOrder extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BTN_tambah)
@@ -371,8 +367,8 @@ public final class GUIOrder extends javax.swing.JFrame {
                 if(!CB_pizza.isSelected() && !CB_spaghetti.isSelected() && !CB_steak.isSelected()){
                     JOptionPane.showMessageDialog(null, "Pilih Menu Makanan!");   
                 } else {
-                    dataPlainText.setDataOrderTemp(dataPlainText.getDataOrderTemp() + dataOrder());
-                    Field_Data.setText(dataPlainText.getDataOrderTemp());                                  
+                    data.setDataOrderTemp(data.getDataOrderTemp() + dataOrder());
+                    Field_Data.setText(data.getDataOrderTemp());                                  
                 }
             } catch(NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Harap Masukkan Angka Pada Kolom No Telepon");
@@ -386,44 +382,7 @@ public final class GUIOrder extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
